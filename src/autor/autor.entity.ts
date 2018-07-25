@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { LibroEntity } from '../libro/libro.entity';
 
 @Entity('AUTOR')
 export class AutorEntity {
@@ -12,4 +13,6 @@ export class AutorEntity {
   @Column()
   apellido: string;
 
+  @OneToMany(type => LibroEntity, libroEntity => libroEntity.autor)
+  libros: LibroEntity[];
 }

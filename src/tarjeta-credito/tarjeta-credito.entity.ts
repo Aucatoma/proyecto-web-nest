@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { UsuarioTarjetaEntity } from '../usuario-tarjeta/usuario-tarjeta.entity';
 
 @Entity('TARJETA_CREDITO')
 export class TarjetaCreditoEntity {
@@ -17,5 +18,8 @@ export class TarjetaCreditoEntity {
 
   @Column()
   anio: number;
+
+  @OneToMany(type => UsuarioTarjetaEntity, usuarioTarjetaEntity => usuarioTarjetaEntity.tarjetaCredito)
+  usuariosTarjetas: UsuarioTarjetaEntity[];
 
 }
