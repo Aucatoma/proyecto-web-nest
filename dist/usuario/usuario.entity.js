@@ -10,6 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
+const comentario_entity_1 = require("../comentario/comentario.entity");
+const usuario_tarjeta_entity_1 = require("../usuario-tarjeta/usuario-tarjeta.entity");
 let UsuarioEntity = class UsuarioEntity {
 };
 __decorate([
@@ -40,6 +42,14 @@ __decorate([
     typeorm_1.Column(),
     __metadata("design:type", String)
 ], UsuarioEntity.prototype, "imagenUrl", void 0);
+__decorate([
+    typeorm_1.OneToMany(type => comentario_entity_1.ComentarioEntity, comentarioEntity => comentarioEntity.usuario),
+    __metadata("design:type", Array)
+], UsuarioEntity.prototype, "comentarios", void 0);
+__decorate([
+    typeorm_1.OneToMany(type => usuario_tarjeta_entity_1.UsuarioTarjetaEntity, usuarioTarjetaEntity => usuarioTarjetaEntity.usuario),
+    __metadata("design:type", Array)
+], UsuarioEntity.prototype, "usuariosTarjetas", void 0);
 UsuarioEntity = __decorate([
     typeorm_1.Entity('USUARIO')
 ], UsuarioEntity);

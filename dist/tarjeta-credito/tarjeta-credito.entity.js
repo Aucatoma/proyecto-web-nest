@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
+const usuario_tarjeta_entity_1 = require("../usuario-tarjeta/usuario-tarjeta.entity");
 let TarjetaCreditoEntity = class TarjetaCreditoEntity {
 };
 __decorate([
@@ -18,7 +19,7 @@ __decorate([
 ], TarjetaCreditoEntity.prototype, "id", void 0);
 __decorate([
     typeorm_1.Column(),
-    __metadata("design:type", Number)
+    __metadata("design:type", String)
 ], TarjetaCreditoEntity.prototype, "numero", void 0);
 __decorate([
     typeorm_1.Column(),
@@ -32,6 +33,10 @@ __decorate([
     typeorm_1.Column(),
     __metadata("design:type", Number)
 ], TarjetaCreditoEntity.prototype, "anio", void 0);
+__decorate([
+    typeorm_1.OneToMany(type => usuario_tarjeta_entity_1.UsuarioTarjetaEntity, usuarioTarjetaEntity => usuarioTarjetaEntity.tarjetaCredito),
+    __metadata("design:type", Array)
+], TarjetaCreditoEntity.prototype, "usuariosTarjetas", void 0);
 TarjetaCreditoEntity = __decorate([
     typeorm_1.Entity('TARJETA_CREDITO')
 ], TarjetaCreditoEntity);

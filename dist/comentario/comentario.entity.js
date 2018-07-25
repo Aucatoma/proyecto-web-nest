@@ -10,6 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
+const usuario_entity_1 = require("../usuario/usuario.entity");
+const libro_entity_1 = require("../libro/libro.entity");
 let ComentarioEntity = class ComentarioEntity {
 };
 __decorate([
@@ -28,6 +30,14 @@ __decorate([
     typeorm_1.Column(),
     __metadata("design:type", Number)
 ], ComentarioEntity.prototype, "puntuacionLibro", void 0);
+__decorate([
+    typeorm_1.ManyToOne(type => usuario_entity_1.UsuarioEntity, usuarioEntity => usuarioEntity.comentarios),
+    __metadata("design:type", usuario_entity_1.UsuarioEntity)
+], ComentarioEntity.prototype, "usuario", void 0);
+__decorate([
+    typeorm_1.ManyToOne(type => libro_entity_1.LibroEntity, libroEntity => libroEntity.comentarios),
+    __metadata("design:type", libro_entity_1.LibroEntity)
+], ComentarioEntity.prototype, "libro", void 0);
 ComentarioEntity = __decorate([
     typeorm_1.Entity('COMENTARIO')
 ], ComentarioEntity);

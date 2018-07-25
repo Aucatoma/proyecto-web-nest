@@ -10,6 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
+const cabecera_pedido_entity_1 = require("../cabecera-pedido/cabecera-pedido.entity");
+const libro_entity_1 = require("../libro/libro.entity");
 let DetallePedidoEntity = class DetallePedidoEntity {
 };
 __decorate([
@@ -20,6 +22,14 @@ __decorate([
     typeorm_1.Column(),
     __metadata("design:type", Number)
 ], DetallePedidoEntity.prototype, "cantidad", void 0);
+__decorate([
+    typeorm_1.ManyToOne(type => cabecera_pedido_entity_1.CabeceraPedidoEntity, cabeceraPedidoEntity => cabeceraPedidoEntity.detalles),
+    __metadata("design:type", cabecera_pedido_entity_1.CabeceraPedidoEntity)
+], DetallePedidoEntity.prototype, "cabecera", void 0);
+__decorate([
+    typeorm_1.ManyToOne(type => libro_entity_1.LibroEntity, libroEntity => libroEntity.detalles),
+    __metadata("design:type", libro_entity_1.LibroEntity)
+], DetallePedidoEntity.prototype, "libro", void 0);
 DetallePedidoEntity = __decorate([
     typeorm_1.Entity('DETALLE_PEDIDO')
 ], DetallePedidoEntity);

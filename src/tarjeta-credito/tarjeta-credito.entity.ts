@@ -8,7 +8,7 @@ export class TarjetaCreditoEntity {
   id: number;
 
   @Column()
-  numero: number;
+  numero: string;
 
   @Column()
   codigo: number;

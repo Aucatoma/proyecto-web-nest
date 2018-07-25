@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
+const libro_entity_1 = require("../libro/libro.entity");
 let AutorEntity = class AutorEntity {
 };
 __decorate([
@@ -24,6 +25,10 @@ __decorate([
     typeorm_1.Column(),
     __metadata("design:type", String)
 ], AutorEntity.prototype, "apellido", void 0);
+__decorate([
+    typeorm_1.OneToMany(type => libro_entity_1.LibroEntity, libroEntity => libroEntity.autor),
+    __metadata("design:type", Array)
+], AutorEntity.prototype, "libros", void 0);
 AutorEntity = __decorate([
     typeorm_1.Entity('AUTOR')
 ], AutorEntity);

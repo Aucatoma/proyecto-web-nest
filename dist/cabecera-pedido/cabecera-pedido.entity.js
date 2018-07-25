@@ -10,6 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
+const usuario_tarjeta_entity_1 = require("../usuario-tarjeta/usuario-tarjeta.entity");
+const detalle_pedido_entity_1 = require("../detalle-pedido/detalle-pedido.entity");
 let CabeceraPedidoEntity = class CabeceraPedidoEntity {
 };
 __decorate([
@@ -28,6 +30,14 @@ __decorate([
     typeorm_1.Column(),
     __metadata("design:type", Number)
 ], CabeceraPedidoEntity.prototype, "iva", void 0);
+__decorate([
+    typeorm_1.ManyToOne(type => usuario_tarjeta_entity_1.UsuarioTarjetaEntity, usuarioTarjetaEntity => usuarioTarjetaEntity.cabeceras),
+    __metadata("design:type", usuario_tarjeta_entity_1.UsuarioTarjetaEntity)
+], CabeceraPedidoEntity.prototype, "usuarioTarjeta", void 0);
+__decorate([
+    typeorm_1.OneToMany(type => detalle_pedido_entity_1.DetallePedidoEntity, detallePedidoEntity => detallePedidoEntity.cabecera),
+    __metadata("design:type", Array)
+], CabeceraPedidoEntity.prototype, "detalles", void 0);
 CabeceraPedidoEntity = __decorate([
     typeorm_1.Entity('CABECERA_PEDIDO')
 ], CabeceraPedidoEntity);

@@ -24,6 +24,7 @@
     "@nestjs/typeorm": "^5.1.0",
     "@nestjs/websockets": "^5.0.0",
     "fastify-formbody": "^2.0.0",
+    "joi": "^13.4.0",
     "jsonwebtoken": "^8.3.0",
     "mssql": "^4.1.0",
     "reflect-metadata": "^0.1.12",
