@@ -20,7 +20,7 @@ export class ComentarioService {
   }
 
   async insert(comentario: Comentario): Promise<InsertResult>{
-   return await this._comentarioRepository.insert(comentario);
+    return await this._comentarioRepository.insert(comentario);
   }
 
   async update(id: string, comentario: Comentario): Promise<UpdateResult>{

@@ -13,20 +13,24 @@ import { EditorialModule } from './editorial/editorial.module';
 import { GeneroModule } from './genero/genero.module';
 import { AutorModule } from './autor/autor.module';
 import { UsuarioTarjetaModule } from './usuario-tarjeta/usuario-tarjeta.module';
+import { JwtService } from './json-web-token/jwt.service';
+import { LoginController } from './login/login.controller';
+import { UsuarioService } from './usuario/usuario.service';
+import { LoginModule } from './login/login.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-    type: 'mssql',
-    host: 'localhost',
-    port: 1433,
-    username: 'sa',
-    password: 'barcelona',
-    database: 'ProyectoWeb',
-    entities: [__dirname + '/../**/*.entity{.ts,.js}'],
-    synchronize: true,
-    options: { encrypt: true },
-  }),
+      type: 'mssql',
+      host: 'localhost',
+      port: 1433,
+      username: 'sa',
+      password: 'barcelona',
+      database: 'ProyectoWeb',
+      entities: [__dirname + '/../**/*.entity{.ts,.js}'],
+      synchronize: true,
+      options: { encrypt: true },
+    }),
     UsuarioModule,
     LibroModule,
     TarjetaCreditoModule,
@@ -36,8 +40,9 @@ import { UsuarioTarjetaModule } from './usuario-tarjeta/usuario-tarjeta.module';
     EditorialModule,
     GeneroModule,
     AutorModule,
-    UsuarioTarjetaModule],
-  controllers: [AppController, TarjetaCreditoController],
-  providers: [ AppService ],
+    UsuarioTarjetaModule,
+    LoginModule],
+  controllers: [AppController],
+  providers: [ AppService],
 })
 export class AppModule {}
