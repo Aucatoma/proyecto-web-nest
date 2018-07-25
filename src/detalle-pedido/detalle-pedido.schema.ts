@@ -8,4 +8,14 @@ export const DETALLE_SCHEMA = Joi.object()
       .integer()
       .positive()
       .required(),
+    cabeceraId: Joi
+      .number()
+      .integer()
+      .positive()
+      .required(),
+    libroId: Joi
+      .number()
+      .integer()
+      .positive()
+      .required(),
   });

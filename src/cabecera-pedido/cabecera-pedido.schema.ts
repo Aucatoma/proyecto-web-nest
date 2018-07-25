@@ -6,13 +6,17 @@ export const CABECERA_SCHEMA = Joi.object()
       .string()
       .required(),
     numero: Joi
-      .number()
-      .positive()
+      .string()
       .required(),
     iva: Joi
       .number()
       .positive()
       .min(1)
       .max(20)
+      .required(),
+    usuarioTarjetaId: Joi
+      .number()
+      .integer()
+      .positive()
       .required(),
   });

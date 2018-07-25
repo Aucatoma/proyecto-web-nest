@@ -15,7 +15,16 @@ export const COMENTARIO_SCHEMA = Joi.object()
     puntuacionLibro: Joi
       .number()
       .integer()
-      .greaterThanOrEqual(0)
-      .lessThanOrEqual(5)
+      .positive()
+      .required(),
+    usuario: Joi
+      .number()
+      .positive()
+      .integer()
+      .required(),
+    libro: Joi
+      .number()
+      .positive()
+      .integer()
       .required(),
   });

@@ -10,7 +10,7 @@ export class CabeceraPedidoEntity {
   id: number;
 
   @Column()
-  numero: number;
+  numero: string;
 
   @Column()
   fecha: string;
