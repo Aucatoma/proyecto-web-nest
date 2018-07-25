@@ -3,7 +3,7 @@ import { HttpException, HttpStatus } from '@nestjs/common';
 export class NoEncontradoException extends HttpException {
   constructor(private readonly _mensaje) {
     super({
-        mensaje: 'Petición errónea',
+        mensaje: 'No encontrado',
         status: HttpStatus.NOT_FOUND,
         detalle: _mensaje,
       },
