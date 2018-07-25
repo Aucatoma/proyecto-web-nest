@@ -5,25 +5,25 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 export class UsuarioEntity {
 
   @PrimaryGeneratedColumn()
-  id:number;
+  id: number;
 
   @Column()
-  username:string;
+  username: string;
 
   @Column()
-  contrasenia:string;
+  contrasenia: string;
 
   @Column()
-  nombre:string;
+  nombre: string;
 
   @Column()
-  apellido:string;
+  apellido: string;
 
   @Column()
-  correo:string;
+  correo: string;
 
   @Column()
-  imagenUrl:string;
+  imagenUrl: string;
 
 
 

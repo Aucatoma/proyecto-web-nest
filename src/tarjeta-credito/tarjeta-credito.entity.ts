@@ -4,18 +4,18 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 export class TarjetaCreditoEntity {
 
   @PrimaryGeneratedColumn()
-  id:number;
+  id: number;
 
   @Column()
-  numero:number;
+  numero: number;
 
   @Column()
-  codigo:number;
+  codigo: number;
 
   @Column()
-  mes:number;
+  mes: number;
 
   @Column()
-  anio:number;
+  anio: number;
 
 }

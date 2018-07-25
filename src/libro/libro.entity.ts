@@ -4,25 +4,25 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 export class LibroEntity {
 
   @PrimaryGeneratedColumn()
-  id:number;
+  id: number;
 
   @Column()
-  nombre:string;
+  nombre: string;
 
   @Column()
-  anio:number;
+  anio: number;
 
   @Column()
-  numeroPaginas:number;
+  numeroPaginas: number;
 
   @Column()
-  descripcion:string;
+  descripcion: string;
 
   @Column()
-  precio:number;
+  precio: number;
 
   @Column()
-  imagenUrl:string;
+  imagenUrl: string;
 
 
 

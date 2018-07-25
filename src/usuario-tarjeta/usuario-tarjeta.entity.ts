@@ -4,7 +4,7 @@ import { Entity, PrimaryGeneratedColumn } from 'typeorm';
 export class UsuarioTarjetaEntity {
 
   @PrimaryGeneratedColumn()
-  id:number;
+  id: number;
 
 
 
