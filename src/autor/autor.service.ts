@@ -18,4 +18,8 @@ export class AutorService {
   async findById(id: string): Promise<AutorEntity>{
     return await this._autorRepository.findOne(id);
   }
+
+  async findByNombre(nombre: string): Promise<AutorEntity[]>{
+    return await this._autorRepository.find({nombre: nombre});
+  }
 }

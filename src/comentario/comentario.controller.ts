@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Param, Post, Put, UsePipes } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, UsePipes } from '@nestjs/common';
 import { ComentarioService } from './comentario.service';
 import { ComentarioPipe } from './comentario.pipe';
 import { COMENTARIO_SCHEMA } from './comentario.schema';
@@ -9,6 +9,17 @@ export class ComentarioController {
   constructor(
     private readonly _comentarioService: ComentarioService,
   ){}
+
+  @Get()
+  obtenerTodos(){
+    return this._comentarioService.findAll();
+  }
+
+  @Get(':id')
+  obtenerUno(@Param('id') id){
+    return this._comentarioService.findByLibroId(id);
+
+  }
 
   @Post()
   @UsePipes(new ComentarioPipe(COMENTARIO_SCHEMA))
