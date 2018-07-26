@@ -3,3 +3,5 @@
 package.json
 package-lock.json
 /dist
+src/app.module.ts
+src/app.module.ts
