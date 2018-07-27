@@ -30,6 +30,8 @@ export const USUARIO_SCHEMA = Joi.object()
       .string()
       .email()
       .required(),
-    imagenUrl: Joi
+    imagen: Joi
+      .required(),
+    nombreImagen: Joi
       .required(),
   });

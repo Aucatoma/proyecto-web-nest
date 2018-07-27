@@ -14,4 +14,8 @@ export class UsuarioService {
     return await this._usuarioRepository.findOne(id);
   }
 
+  async insertar(){
+
+    //this._usuarioRepository.insert();
+  }
 }

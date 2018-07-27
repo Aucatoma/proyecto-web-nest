@@ -27,6 +27,8 @@ import { UsuarioController } from './usuario/usuario.controller';
 import { GeneroController } from './genero/genero.controller';
 import { EditorialController } from './editorial/editorial.controller';
 import { UsuarioTarjetaController } from './usuario-tarjeta/usuario-tarjeta.controller';
+import { RegistroController } from './registro/registro.controller';
+import { CorsMiddleware } from './middleware/cors/cors.middleware';
 
 @Module({
   imports: [
@@ -52,7 +54,7 @@ import { UsuarioTarjetaController } from './usuario-tarjeta/usuario-tarjeta.cont
     AutorModule,
     UsuarioTarjetaModule,
     LoginModule],
-  controllers: [AppController],
+  controllers: [AppController, RegistroController],
   providers: [ AppService, JwtService],
 })
 export class AppModule implements NestModule{
@@ -76,6 +78,8 @@ export class AppModule implements NestModule{
         TarjetaCreditoController,
         EditorialController,
         GeneroController,
-        UsuarioTarjetaController);
+        UsuarioTarjetaController)
+      .apply(CorsMiddleware)
+      .forRoutes({path: '*', method: RequestMethod.ALL});
   }
 }
