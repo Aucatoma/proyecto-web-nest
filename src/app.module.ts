@@ -26,6 +26,7 @@ import { EditorialController } from './editorial/editorial.controller';
 import { UsuarioTarjetaController } from './usuario-tarjeta/usuario-tarjeta.controller';
 import { RegistroController } from './registro/registro.controller';
 import { CorsMiddleware } from './middleware/cors/cors.middleware';
+import { JwtService } from './json-web-token/jwt.service';
 
 @Module({
   imports: [
@@ -33,8 +34,8 @@ import { CorsMiddleware } from './middleware/cors/cors.middleware';
       type: 'mssql',
       host: 'localhost',
       port: 1433,
-      username: 'marcelo',
-      password: 'marcelo',
+      username: 'sa',
+      password: 'barcelona',
       database: 'ProyectoWeb',
       entities: [__dirname + '/../**/*.entity{.ts,.js}'],
       synchronize: true,

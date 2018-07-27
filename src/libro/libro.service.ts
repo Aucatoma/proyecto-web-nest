@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Repository } from 'typeorm';
+import { Like, Repository } from 'typeorm';
 import { LibroEntity } from './libro.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 
@@ -23,5 +23,9 @@ export class LibroService {
     return await this._libroRepository.find({nombre:nombre});
   }
 
-
+  async findLike(lk: string): Promise<LibroEntity[]>{
+      return await this._libroRepository.find({
+        nombre: Like(`%${lk}%`),
+      });
+  }
 }

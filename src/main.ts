@@ -1,7 +1,5 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { join } from 'path';
-import { CorsMiddleware } from './middleware/cors/cors.middleware';
 
 const bodyParser = require('body-parser');
 
