@@ -1,4 +1,4 @@
-import { PipeTransform, Pipe, ArgumentMetadata, Injectable, BadRequestException } from '@nestjs/common';
+import { PipeTransform, ArgumentMetadata, Injectable} from '@nestjs/common';
 import * as Joi from 'joi';
 import { PeticionErroreaException } from '../exception/peticion-errorea/peticion-errorea.exception';
 

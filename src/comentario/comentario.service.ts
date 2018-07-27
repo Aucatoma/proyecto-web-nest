@@ -15,8 +15,8 @@ export class ComentarioService {
     return await this._comentarioRepository.find();
   }
 
-  async findByLibroId(id: string): Promise<ComentarioEntity[]>{
-    return await this._comentarioRepository.find({ where: { libroId: id } });
+  async findByLibroId(id: string): Promise<ComentarioEntity>{
+    return await this._comentarioRepository.findOne(id);
   }
 
   async insert(comentario: Comentario): Promise<InsertResult>{

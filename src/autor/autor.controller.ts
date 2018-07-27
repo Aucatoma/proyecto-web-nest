@@ -1,5 +1,6 @@
-import { Controller, Get, Param, Post } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { AutorService } from './autor.service';
+
 
 @Controller('autor')
 export class AutorController {
@@ -14,13 +15,22 @@ export class AutorController {
   }
 
   @Get(':id')
-  obtenerUno(@Param('id') id){
+  obtenerUnoPorId(@Param('id') id){
     return this._autorService.findById(id);
   }
 
-  @Post()
-  insertarUno(){
-
+  @Get('nombre/:nombre')
+  obtenerUnoPorNombre(@Param('nombre') nombre){
+    return this._autorService.findByNombre(nombre);
   }
+
+
+
+
+
+
+
+
+
 
 }
