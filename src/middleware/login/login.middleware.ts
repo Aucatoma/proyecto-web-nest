@@ -16,7 +16,7 @@ export class LoginMiddleware implements NestMiddleware {
             req.user = decoded;
             next();
           }else
-            throw new PeticionErroreaException('El token es inválido');
+            throw new PeticionErroreaException(error);
         });
       }
       else{

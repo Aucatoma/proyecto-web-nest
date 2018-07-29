@@ -32,6 +32,6 @@ export const USUARIO_SCHEMA = Joi.object()
       .required(),
     imagen: Joi
       .required(),
-    nombreImagen: Joi
+    extension: Joi
       .required(),
   });

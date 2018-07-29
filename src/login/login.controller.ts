@@ -1,4 +1,4 @@
-import { Body, Controller, HttpCode, NotFoundException, Post, UsePipes } from '@nestjs/common';
+import { Body, Controller, HttpCode, NotFoundException, Post, Res, UsePipes } from '@nestjs/common';
 import { LoginPipe } from './login.pipe';
 import { LOGIN_SCHEMA } from './login.schema';
 import { Login } from './login';
@@ -15,11 +15,11 @@ export class LoginController {
 
   @Post()
   @HttpCode(200)
-  @UsePipes(new LoginPipe(LOGIN_SCHEMA))
-  async login(@Body() login: Login){
+  async login(@Body(new LoginPipe(LOGIN_SCHEMA)) login: Login){
     const usuario = await this._loginService.findForLogin(login.username, login.contrasenia);
     if (usuario){
-      return `{ "token": "${this._jwtService.emitirToken(usuario.username)}" }`;
+      const jwt = this._jwtService.emitirToken(usuario.username);
+      return `{ "jwt": "${jwt}", "usuario":${JSON.stringify(usuario)}}`;
     }
     throw new NoEncontradoException('Something went wrong. Please, try again.');
   }

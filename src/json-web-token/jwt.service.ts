@@ -18,4 +18,8 @@ export class JwtService {
       this._jwt.verify(token, this._secreto, callback);
   }
 
+  leerToken(token: string) {
+    return this._jwt.decode(token, {json: true});
+  }
+
 }

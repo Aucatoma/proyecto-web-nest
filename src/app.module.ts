@@ -27,6 +27,8 @@ import { UsuarioTarjetaController } from './usuario-tarjeta/usuario-tarjeta.cont
 import { RegistroController } from './registro/registro.controller';
 import { CorsMiddleware } from './middleware/cors/cors.middleware';
 import { JwtService } from './json-web-token/jwt.service';
+import { UsuarioService } from './usuario/usuario.service';
+import { RegistroModule } from './registro/registro.module';
 
 @Module({
   imports: [
@@ -51,8 +53,9 @@ import { JwtService } from './json-web-token/jwt.service';
     GeneroModule,
     AutorModule,
     UsuarioTarjetaModule,
-    LoginModule],
-  controllers: [AppController, RegistroController],
+    LoginModule,
+    RegistroModule],
+  controllers: [AppController],
   providers: [ AppService, JwtService],
 })
 export class AppModule implements NestModule{

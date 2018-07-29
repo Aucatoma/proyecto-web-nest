@@ -1,22 +1,15 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { UsuarioEntity } from './usuario.entity';
+import { Usuario } from '../usuario/usuario';
 import { InsertResult, Repository } from 'typeorm';
-import { Usuario } from './usuario';
+import { UsuarioEntity } from '../usuario/usuario.entity';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
-export class UsuarioService {
+export class RegistroService {
   constructor(
     @InjectRepository(UsuarioEntity)
     private readonly _usuarioRepository: Repository<UsuarioEntity>,
   ){}
-
-
-  async findById(id: string): Promise<UsuarioEntity>{
-    return await this._usuarioRepository.findOne(id);
-  }
-
-
 
   async insertar(usuario: Usuario): Promise<InsertResult>{
 
@@ -28,6 +21,7 @@ export class UsuarioService {
       contrasenia: usuario.contrasenia,
       imagenUrl: usuario.imagenUrl,
     });
+
     return await this._usuarioRepository.insert(usuarioInsert);
   }
 
