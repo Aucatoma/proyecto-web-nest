@@ -29,7 +29,6 @@ export class LibroEntity {
   @Column()
   imagenUrl: string;
 
-
   @OneToMany(type => ComentarioEntity, comentarioEntity => comentarioEntity.libro)
   comentarios: ComentarioEntity[];
 
