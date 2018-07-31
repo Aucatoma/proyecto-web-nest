@@ -36,4 +36,9 @@ export class ComentarioController {
   eliminarComentario(@Param('id') id){
     return this._comentarioService.delete(id);
   }
+
+  @Get('libro/:id')
+  obtenerComentarios(@Param('id') id){
+    return this._comentarioService.findByLibroIdArr(id);
+  }
 }

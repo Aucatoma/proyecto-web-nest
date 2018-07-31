@@ -21,6 +21,10 @@ export class EditorialController {
 
   @Get('nombre/:nombre')
   obtenerUnoPorNombre(@Param('nombre') nombre){
-    return this._editorialService.findByEditorialName(nombre)
+    return this._editorialService.findByEditorialName(nombre);
+  }
+  @Get('libro/:id')
+  obtenerPorLibro(@Param('id') id){
+    return this._editorialService.findByLibroId(id);
   }
 }

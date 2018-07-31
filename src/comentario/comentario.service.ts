@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { ComentarioEntity } from './comentario.entity';
 import { InsertResult, Repository, UpdateResult } from 'typeorm';
 import { Comentario } from './comentario';
+import { EditorialEntity } from '../editorial/editorial.entity';
 
 @Injectable()
 export class ComentarioService {
@@ -29,5 +30,12 @@ export class ComentarioService {
 
   async delete(id: string){
     return await this._comentarioRepository.delete(id);
+  }
+
+  async findByLibroIdArr(id: string): Promise<ComentarioEntity[]>{
+    return this._comentarioRepository.createQueryBuilder('comentario')
+      .innerJoin('comentario.libro', 'libro')
+      .where('libro.id = :id', {id})
+      .getMany();
   }
 }

@@ -22,4 +22,10 @@ export class GeneroController {
   obtenerUnoPorNombre(@Param('nombre') nombre){
      return this._generoService.findByGeneroName(nombre)
   }
+
+  @Get('libro/:id')
+  obtenerPorLibro(@Param('id') id){
+    return this._generoService.findByLibroId(id);
+  }
+
 }

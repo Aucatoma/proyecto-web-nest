@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { UsuarioEntity } from './usuario.entity';
 import { InsertResult, Repository } from 'typeorm';
 import { Usuario } from './usuario';
+import { EditorialEntity } from '../editorial/editorial.entity';
 
 @Injectable()
 export class UsuarioService {
@@ -33,5 +34,12 @@ export class UsuarioService {
 
   async findByUsername(username: string): Promise<UsuarioEntity>{
     return await this._usuarioRepository.findOne({username});
+  }
+
+  async findByComentarioId(id: string): Promise<UsuarioEntity>{
+    return this._usuarioRepository.createQueryBuilder('usuario')
+      .innerJoin('usuario.comentarios', 'comentario')
+      .where('comentario.id = :id', {id})
+      .getOne();
   }
 }

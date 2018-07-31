@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Like, Repository } from 'typeorm';
 import { LibroEntity } from './libro.entity';
 import { InjectRepository } from '@nestjs/typeorm';
+import { AutorEntity } from '../autor/autor.entity';
 
 
 @Injectable()
@@ -28,4 +29,5 @@ export class LibroService {
         nombre: Like(`%${lk}%`),
       });
   }
+
 }

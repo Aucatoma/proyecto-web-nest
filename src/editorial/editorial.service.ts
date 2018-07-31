@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { EditorialEntity } from './editorial.entity';
+import { AutorEntity } from '../autor/autor.entity';
 
 @Injectable()
 export class EditorialService {
@@ -21,7 +22,14 @@ export class EditorialService {
   }
 
   async findByEditorialName(nombre: string): Promise<EditorialEntity[]>{
-    return await this._editorialRepository.find({nombre: nombre})
+    return await this._editorialRepository.find({nombre});
+  }
+
+  async findByLibroId(id: string): Promise<EditorialEntity>{
+    return this._editorialRepository.createQueryBuilder('editorial')
+      .innerJoin('editorial.libros', 'libro')
+      .where('libro.id = :id', {id})
+      .getOne();
   }
 
 }

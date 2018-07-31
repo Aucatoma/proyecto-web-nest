@@ -11,7 +11,7 @@ export class AutorController {
 
   @Get()
   obtenerTodos(){
-    return this._autorService.findAll();
+   // return this._autorService.findByLibroId('id');
   }
 
   @Get(':id')
@@ -24,13 +24,9 @@ export class AutorController {
     return this._autorService.findByNombre(nombre);
   }
 
-
-
-
-
-
-
-
-
+  @Get('libro/:id')
+  obtenerAutor(@Param('id') id){
+    return this._autorService.findByLibroId(id);
+  }
 
 }

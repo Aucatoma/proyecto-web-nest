@@ -26,4 +26,9 @@ export class UsuarioController {
     return this._usuarioService.findByUsername(username);
   }
 
+  @Get('comentario/:id')
+  obtenerUsuarioPorComentario(@Param('id') id){
+    return this._usuarioService.findByComentarioId(id);
+  }
+
 }

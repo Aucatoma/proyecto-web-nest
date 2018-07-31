@@ -65,6 +65,12 @@ export class AppModule implements NestModule{
       .exclude(
         {path: 'autor', method: RequestMethod.GET},
         {path: 'libro', method: RequestMethod.GET},
+        {path: 'libro/:id', method: RequestMethod.GET},
+        {path: 'autor/libro/:id', method: RequestMethod.GET},
+        {path: 'editorial/libro/:id', method: RequestMethod.GET},
+        {path: 'genero/libro/:id', method: RequestMethod.GET},
+        {path: 'comentario/libro/:id', method: RequestMethod.GET},
+        {path: 'usuario/comentario/:id', method: RequestMethod.GET},
         {path: 'editorial', method: RequestMethod.GET},
         {path: 'genero', method: RequestMethod.GET},
         {path: 'comentario', method: RequestMethod.GET},

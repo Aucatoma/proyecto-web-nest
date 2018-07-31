@@ -7,7 +7,7 @@ export class TarjetaCreditoEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({nullable: true})
   tipo: string;
 
   @Column({unique: true})
