@@ -8,13 +8,11 @@ export const COMENTARIO_SCHEMA = Joi.object()
       .required(),
     comentario: Joi
       .string()
-      .min(1)
       .max(500)
       .required(),
     puntuacionLibro: Joi
       .number()
       .integer()
-      .positive()
       .required(),
     usuario: Joi
       .number()
