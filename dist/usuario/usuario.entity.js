@@ -19,7 +19,7 @@ __decorate([
     __metadata("design:type", Number)
 ], UsuarioEntity.prototype, "id", void 0);
 __decorate([
-    typeorm_1.Column(),
+    typeorm_1.Column({ unique: true }),
     __metadata("design:type", String)
 ], UsuarioEntity.prototype, "username", void 0);
 __decorate([

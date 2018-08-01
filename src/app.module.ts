@@ -36,8 +36,8 @@ import { RegistroModule } from './registro/registro.module';
       type: 'mssql',
       host: 'localhost',
       port: 1433,
-      username: 'sa',
-      password: 'barcelona',
+      username: 'marcelo',
+      password: 'marcelo',
       database: 'ProyectoWeb',
       entities: [__dirname + '/../**/*.entity{.ts,.js}'],
       synchronize: true,
@@ -74,6 +74,7 @@ export class AppModule implements NestModule{
         {path: 'editorial', method: RequestMethod.GET},
         {path: 'genero', method: RequestMethod.GET},
         {path: 'comentario', method: RequestMethod.GET},
+        {path: 'comentario', method: RequestMethod.POST},
         )
       .forRoutes(
         AutorController,

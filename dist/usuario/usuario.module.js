@@ -9,12 +9,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const usuario_service_1 = require("./usuario.service");
 const usuario_controller_1 = require("./usuario.controller");
+const typeorm_1 = require("@nestjs/typeorm");
+const usuario_entity_1 = require("./usuario.entity");
+const jwt_service_1 = require("../json-web-token/jwt.service");
 let UsuarioModule = class UsuarioModule {
 };
 UsuarioModule = __decorate([
     common_1.Module({
-        providers: [usuario_service_1.UsuarioService],
-        controllers: [usuario_controller_1.UsuarioController]
+        exports: [usuario_service_1.UsuarioService],
+        imports: [typeorm_1.TypeOrmModule.forFeature([usuario_entity_1.UsuarioEntity])],
+        providers: [usuario_service_1.UsuarioService, jwt_service_1.JwtService],
+        controllers: [usuario_controller_1.UsuarioController],
     })
 ], UsuarioModule);
 exports.UsuarioModule = UsuarioModule;
