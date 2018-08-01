@@ -29,6 +29,9 @@ import { CorsMiddleware } from './middleware/cors/cors.middleware';
 import { JwtService } from './json-web-token/jwt.service';
 import { UsuarioService } from './usuario/usuario.service';
 import { RegistroModule } from './registro/registro.module';
+import { SpeechTextController } from './speech-text/speech-text.controller';
+import { SpeechTextService } from './speech-text/speech-text.service';
+import { SpeechTextModule } from './speech-text/speech-text.module';
 
 @Module({
   imports: [
@@ -36,8 +39,8 @@ import { RegistroModule } from './registro/registro.module';
       type: 'mssql',
       host: 'localhost',
       port: 1433,
-      username: 'marcelo',
-      password: 'marcelo',
+      username: 'sa',
+      password: 'barcelona',
       database: 'ProyectoWeb',
       entities: [__dirname + '/../**/*.entity{.ts,.js}'],
       synchronize: true,
@@ -54,7 +57,8 @@ import { RegistroModule } from './registro/registro.module';
     AutorModule,
     UsuarioTarjetaModule,
     LoginModule,
-    RegistroModule],
+    RegistroModule,
+    SpeechTextModule],
   controllers: [AppController],
   providers: [ AppService, JwtService],
 })
