@@ -78,7 +78,6 @@ export class AppModule implements NestModule{
         {path: 'editorial', method: RequestMethod.GET},
         {path: 'genero', method: RequestMethod.GET},
         {path: 'comentario', method: RequestMethod.GET},
-        {path: 'comentario', method: RequestMethod.POST},
         )
       .forRoutes(
         AutorController,
