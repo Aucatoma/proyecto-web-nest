@@ -9,12 +9,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const autor_controller_1 = require("./autor.controller");
 const autor_service_1 = require("./autor.service");
+const typeorm_1 = require("@nestjs/typeorm");
+const autor_entity_1 = require("./autor.entity");
 let AutorModule = class AutorModule {
 };
 AutorModule = __decorate([
     common_1.Module({
+        imports: [typeorm_1.TypeOrmModule.forFeature([autor_entity_1.AutorEntity])],
         controllers: [autor_controller_1.AutorController],
-        providers: [autor_service_1.AutorService]
+        providers: [autor_service_1.AutorService],
     })
 ], AutorModule);
 exports.AutorModule = AutorModule;

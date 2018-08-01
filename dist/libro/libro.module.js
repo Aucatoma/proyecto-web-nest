@@ -9,12 +9,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const libro_service_1 = require("./libro.service");
 const libro_controller_1 = require("./libro.controller");
+const typeorm_1 = require("@nestjs/typeorm");
+const libro_entity_1 = require("./libro.entity");
 let LibroModule = class LibroModule {
 };
 LibroModule = __decorate([
     common_1.Module({
+        imports: [typeorm_1.TypeOrmModule.forFeature([libro_entity_1.LibroEntity])],
         providers: [libro_service_1.LibroService],
-        controllers: [libro_controller_1.LibroController]
+        controllers: [libro_controller_1.LibroController],
     })
 ], LibroModule);
 exports.LibroModule = LibroModule;

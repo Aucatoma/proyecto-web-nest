@@ -20,7 +20,7 @@ __decorate([
 ], CabeceraPedidoEntity.prototype, "id", void 0);
 __decorate([
     typeorm_1.Column(),
-    __metadata("design:type", Number)
+    __metadata("design:type", String)
 ], CabeceraPedidoEntity.prototype, "numero", void 0);
 __decorate([
     typeorm_1.Column(),

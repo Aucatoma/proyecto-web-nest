@@ -18,7 +18,11 @@ __decorate([
     __metadata("design:type", Number)
 ], TarjetaCreditoEntity.prototype, "id", void 0);
 __decorate([
-    typeorm_1.Column(),
+    typeorm_1.Column({ nullable: true }),
+    __metadata("design:type", String)
+], TarjetaCreditoEntity.prototype, "tipo", void 0);
+__decorate([
+    typeorm_1.Column({ unique: true }),
     __metadata("design:type", String)
 ], TarjetaCreditoEntity.prototype, "numero", void 0);
 __decorate([
