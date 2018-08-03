@@ -8,12 +8,12 @@ export const DETALLE_SCHEMA = Joi.object()
       .integer()
       .positive()
       .required(),
-    cabeceraId: Joi
+    cabecera: Joi
       .number()
       .integer()
       .positive()
       .required(),
-    libroId: Joi
+    libro: Joi
       .number()
       .integer()
       .positive()

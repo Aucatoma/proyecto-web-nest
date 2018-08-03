@@ -41,4 +41,9 @@ export class ComentarioController {
   obtenerComentarios(@Param('id') id){
     return this._comentarioService.findByLibroIdArr(id);
   }
+
+  @Get('libro/usuario/:id')
+  obtenerUsuarioComentario(@Param('id') id){
+    return this._comentarioService.findUsuarioByLibroComentario(id);
+  }
 }

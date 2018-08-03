@@ -14,7 +14,7 @@ export const CABECERA_SCHEMA = Joi.object()
       .min(1)
       .max(20)
       .required(),
-    usuarioTarjetaId: Joi
+    usuarioTarjeta: Joi
       .number()
       .integer()
       .positive()

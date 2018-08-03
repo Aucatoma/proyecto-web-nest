@@ -4,6 +4,8 @@ import { ComentarioEntity } from './comentario.entity';
 import { InsertResult, Repository, UpdateResult } from 'typeorm';
 import { Comentario } from './comentario';
 import { EditorialEntity } from '../editorial/editorial.entity';
+import { UsuarioEntity } from '../usuario/usuario.entity';
+import { LibroEntity } from '../libro/libro.entity';
 
 @Injectable()
 export class ComentarioService {
@@ -38,4 +40,17 @@ export class ComentarioService {
       .where('libro.id = :id', {id})
       .getMany();
   }
+
+  async findUsuarioByLibroComentario(id: string): Promise<Object[]> {
+    return this._comentarioRepository
+      .createQueryBuilder('comentario')
+      .innerJoin('comentario.libro', 'libro')
+      .innerJoin('comentario.usuario', 'usuario')
+      .select(['comentario', 'usuario.username', 'usuario.imagenUrl'])
+      .where('comentario.libro = :id', {id})
+    .getMany();
+  }
+
+
+
 }

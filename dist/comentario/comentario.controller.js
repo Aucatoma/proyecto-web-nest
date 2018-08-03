@@ -38,6 +38,9 @@ let ComentarioController = class ComentarioController {
     obtenerComentarios(id) {
         return this._comentarioService.findByLibroIdArr(id);
     }
+    obtenerUsuarioComentario(id) {
+        return this._comentarioService.findUsuarioByLibroComentario(id);
+    }
 };
 __decorate([
     common_1.Get(),
@@ -81,6 +84,13 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], ComentarioController.prototype, "obtenerComentarios", null);
+__decorate([
+    common_1.Get('libro/usuario/:id'),
+    __param(0, common_1.Param('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], ComentarioController.prototype, "obtenerUsuarioComentario", null);
 ComentarioController = __decorate([
     common_1.Controller('comentario'),
     __metadata("design:paramtypes", [comentario_service_1.ComentarioService])

@@ -61,6 +61,17 @@ let ComentarioService = class ComentarioService {
                 .getMany();
         });
     }
+    findUsuarioByLibroComentario(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this._comentarioRepository
+                .createQueryBuilder('comentario')
+                .innerJoin('comentario.libro', 'libro')
+                .innerJoin('comentario.usuario', 'usuario')
+                .select(['comentario', 'usuario.username', 'usuario.imagenUrl'])
+                .where('comentario.libro = :id', { id })
+                .getMany();
+        });
+    }
 };
 ComentarioService = __decorate([
     common_1.Injectable(),

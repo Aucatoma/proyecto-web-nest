@@ -24,4 +24,7 @@ export const COMENTARIO_SCHEMA = Joi.object()
       .positive()
       .integer()
       .required(),
+    username: Joi
+      .string(),
+    usuarioComentario: Joi
   });

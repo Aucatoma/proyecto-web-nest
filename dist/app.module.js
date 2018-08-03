@@ -35,11 +35,12 @@ const usuario_tarjeta_controller_1 = require("./usuario-tarjeta/usuario-tarjeta.
 const cors_middleware_1 = require("./middleware/cors/cors.middleware");
 const jwt_service_1 = require("./json-web-token/jwt.service");
 const registro_module_1 = require("./registro/registro.module");
+const speech_text_module_1 = require("./speech-text/speech-text.module");
 let AppModule = class AppModule {
     configure(consumer) {
         consumer
             .apply(login_middleware_1.LoginMiddleware)
-            .exclude({ path: 'autor', method: common_1.RequestMethod.GET }, { path: 'libro', method: common_1.RequestMethod.GET }, { path: 'libro/:id', method: common_1.RequestMethod.GET }, { path: 'autor/libro/:id', method: common_1.RequestMethod.GET }, { path: 'editorial/libro/:id', method: common_1.RequestMethod.GET }, { path: 'genero/libro/:id', method: common_1.RequestMethod.GET }, { path: 'comentario/libro/:id', method: common_1.RequestMethod.GET }, { path: 'usuario/comentario/:id', method: common_1.RequestMethod.GET }, { path: 'editorial', method: common_1.RequestMethod.GET }, { path: 'genero', method: common_1.RequestMethod.GET }, { path: 'comentario', method: common_1.RequestMethod.GET })
+            .exclude({ path: 'autor', method: common_1.RequestMethod.GET }, { path: 'libro', method: common_1.RequestMethod.GET }, { path: 'libro/:id', method: common_1.RequestMethod.GET }, { path: 'autor/libro/:id', method: common_1.RequestMethod.GET }, { path: 'editorial/libro/:id', method: common_1.RequestMethod.GET }, { path: 'genero/libro/:id', method: common_1.RequestMethod.GET }, { path: 'comentario/libro/:id', method: common_1.RequestMethod.GET }, { path: 'usuario/comentario/:id', method: common_1.RequestMethod.GET }, { path: 'comentario/libro/usuario/:id', method: common_1.RequestMethod.GET }, { path: 'editorial', method: common_1.RequestMethod.GET }, { path: 'genero', method: common_1.RequestMethod.GET }, { path: 'comentario', method: common_1.RequestMethod.GET }, { path: 'comentario', method: common_1.RequestMethod.POST }, { path: 'cabecera-pedido', method: common_1.RequestMethod.POST }, { path: 'detalle-pedido', method: common_1.RequestMethod.POST })
             .forRoutes(autor_controller_1.AutorController, libro_controller_1.LibroController, cabecera_pedido_controller_1.CabeceraPedidoController, detalle_pedido_controller_1.DetallePedidoController, comentario_controller_1.ComentarioController, usuario_controller_1.UsuarioController, tarjeta_credito_controller_1.TarjetaCreditoController, editorial_controller_1.EditorialController, genero_controller_1.GeneroController, usuario_tarjeta_controller_1.UsuarioTarjetaController)
             .apply(cors_middleware_1.CorsMiddleware)
             .forRoutes({ path: '*', method: common_1.RequestMethod.ALL });
@@ -70,7 +71,8 @@ AppModule = __decorate([
             autor_module_1.AutorModule,
             usuario_tarjeta_module_1.UsuarioTarjetaModule,
             login_module_1.LoginModule,
-            registro_module_1.RegistroModule
+            registro_module_1.RegistroModule,
+            speech_text_module_1.SpeechTextModule
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService, jwt_service_1.JwtService],
