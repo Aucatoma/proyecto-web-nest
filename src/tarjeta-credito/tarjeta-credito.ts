@@ -1,8 +1,9 @@
 export interface TarjetaCredito {
 
-  numero:string;
-  codigo:number;
-  mes:number;
-  anio:number;
+  id: number;
+  numero: string;
+  codigo: number;
+  mes: number;
+  anio: number;
 
 }

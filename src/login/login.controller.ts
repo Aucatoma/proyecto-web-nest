@@ -18,8 +18,8 @@ export class LoginController {
   async login(@Body(new LoginPipe(LOGIN_SCHEMA)) login: Login){
     const usuario = await this._loginService.findForLogin(login.username, login.contrasenia);
     if (usuario){
-      const jwt = this._jwtService.emitirToken(usuario.username);
-      return `{ "jwt": "${jwt}", "usuario":${JSON.stringify(usuario)}}`;
+      const jwt = this._jwtService.emitirToken(usuario.id);
+      return `{ "jwt": { "token": "${jwt}"}, "usuario":${JSON.stringify(usuario)}}`;
     }
     throw new NoEncontradoException('Something went wrong. Please, try again.');
   }

@@ -4,6 +4,7 @@ import { UsuarioEntity } from './usuario.entity';
 import { InsertResult, Repository } from 'typeorm';
 import { Usuario } from './usuario';
 import { EditorialEntity } from '../editorial/editorial.entity';
+import { take } from 'rxjs/internal/operators';
 
 @Injectable()
 export class UsuarioService {
@@ -20,7 +21,6 @@ export class UsuarioService {
 
 
   async insertar(usuario: Usuario): Promise<InsertResult>{
-
     const usuarioInsert = this._usuarioRepository.create({
       nombre: usuario.nombre,
       apellido: usuario.apellido,
@@ -30,6 +30,10 @@ export class UsuarioService {
       imagenUrl: usuario.imagenUrl,
     });
     return await this._usuarioRepository.insert(usuarioInsert);
+  }
+
+  async editarUsuario(usuario: Usuario): Promise<UsuarioEntity>{
+    return await this._usuarioRepository.save(usuario);
   }
 
   async findByUsername(username: string): Promise<UsuarioEntity>{

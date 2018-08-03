@@ -38,10 +38,11 @@ export class SpeechTextController {
       }else{
         try {
           const textoRecv = JSON.parse(body);
+          console.log(JSON.stringify(textoRecv));
           const texto = textoRecv.results[0].alternatives[0].transcript.trim();
           res.send(`{"texto": "${ texto }"}`);
         }catch (e){
-          throw new BadRequestException('Hable claro por favor');
+          res.send('Error');
         }
       }
     });

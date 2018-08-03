@@ -30,8 +30,8 @@ export class RegistroController {
         usuario.imagenUrl = `http://localhost:8080/usuario/${nombreArchivo}`;
         const usuarioId = await this._registroService.insertar(usuario);
         usuario.id = usuarioId.identifiers[0].id;
-        const jwt = this._jwtService.emitirToken(usuario.username);
-        res.send(`{ "jwt": "${jwt}", "usuario":${JSON.stringify(usuario)}}`);
+        const jwt = this._jwtService.emitirToken(usuario.id);
+        res.send(`{ "jwt": { "token": "${jwt}"}, "usuario":${JSON.stringify(usuario)}}`);
       }
     });
   }
