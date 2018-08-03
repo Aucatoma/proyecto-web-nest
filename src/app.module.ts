@@ -32,6 +32,7 @@ import { RegistroModule } from './registro/registro.module';
 import { SpeechTextController } from './speech-text/speech-text.controller';
 import { SpeechTextService } from './speech-text/speech-text.service';
 import { SpeechTextModule } from './speech-text/speech-text.module';
+import { UsuarioTarjetaService } from './usuario-tarjeta/usuario-tarjeta.service';
 
 @Module({
   imports: [

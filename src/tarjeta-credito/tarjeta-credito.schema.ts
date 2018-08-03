@@ -3,6 +3,11 @@ import * as Joi from 'joi';
 
 export const TARJETA_SCHEMA = Joi.object()
   .keys({
+    id: Joi
+      .number(),
+    tipo: Joi
+      .string()
+      .required(),
     numero: Joi
       .string()
       .creditCard()

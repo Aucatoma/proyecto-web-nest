@@ -3,6 +3,9 @@ import * as Joi from 'joi';
 
 export const USUARIO_SCHEMA = Joi.object()
   .keys({
+    id: Joi
+      .number()
+      .positive(),
     username: Joi
       .string()
       .alphanum()
@@ -31,7 +34,7 @@ export const USUARIO_SCHEMA = Joi.object()
       .email()
       .required(),
     imagen: Joi
-      .required(),
+      .string(),
     extension: Joi
       .required(),
   });
