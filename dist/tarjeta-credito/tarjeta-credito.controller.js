@@ -20,55 +20,50 @@ let TarjetaCreditoController = class TarjetaCreditoController {
     constructor(_tarjetaService) {
         this._tarjetaService = _tarjetaService;
     }
-    obtenerTodos() {
-        return this._tarjetaService.findAll();
+    obtenerTarjetas(req) {
+        const id = req.user.data;
+        return this._tarjetaService.findByUserId(id);
     }
-    obtenerUno(id) {
-        return this._tarjetaService.findByLibroId(id);
+    insertarTarjeta(tarjeta, req) {
+        console.log(tarjeta);
+        const id = req.user.data;
+        return this._tarjetaService.insert(id, tarjeta);
     }
-    insertarTarjeta(tarjeta) {
-        return this._tarjetaService.insert(tarjeta);
+    actualizarTarjeta(tarjeta, req) {
+        const id = req.user.data;
+        return this._tarjetaService.update(tarjeta);
     }
-    actualizarTarjeta(id, tarjeta) {
-        return this._tarjetaService.update(id, tarjeta);
-    }
-    eliminarTarjeta(id) {
-        return this._tarjetaService.delete(id);
+    eliminarTarjeta(id, req) {
+        const id_usuario = req.user.data;
+        return this._tarjetaService.delete(id_usuario, id);
     }
 };
 __decorate([
     common_1.Get(),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
-], TarjetaCreditoController.prototype, "obtenerTodos", null);
-__decorate([
-    common_1.Get(':id'),
-    __param(0, common_1.Param('id')),
+    __param(0, common_1.Req()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
-], TarjetaCreditoController.prototype, "obtenerUno", null);
+], TarjetaCreditoController.prototype, "obtenerTarjetas", null);
 __decorate([
     common_1.Post(),
-    common_1.UsePipes(new tarjeta_credito_pipe_1.TarjetaCreditoPipe(tarjeta_credito_schema_1.TARJETA_SCHEMA)),
-    __param(0, common_1.Body()),
+    __param(0, common_1.Body(new tarjeta_credito_pipe_1.TarjetaCreditoPipe(tarjeta_credito_schema_1.TARJETA_SCHEMA))), __param(1, common_1.Req()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", void 0)
 ], TarjetaCreditoController.prototype, "insertarTarjeta", null);
 __decorate([
     common_1.Put(':id'),
-    __param(0, common_1.Param('id')), __param(1, common_1.Body(new tarjeta_credito_pipe_1.TarjetaCreditoPipe(tarjeta_credito_schema_1.TARJETA_SCHEMA))),
+    __param(0, common_1.Body(new tarjeta_credito_pipe_1.TarjetaCreditoPipe(tarjeta_credito_schema_1.TARJETA_SCHEMA))), __param(1, common_1.Req()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", void 0)
 ], TarjetaCreditoController.prototype, "actualizarTarjeta", null);
 __decorate([
     common_1.Delete(':id'),
-    __param(0, common_1.Param('id')),
+    __param(0, common_1.Param('id')), __param(1, common_1.Req()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", void 0)
 ], TarjetaCreditoController.prototype, "eliminarTarjeta", null);
 TarjetaCreditoController = __decorate([

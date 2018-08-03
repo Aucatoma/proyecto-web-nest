@@ -24,40 +24,53 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
 const tarjeta_credito_entity_1 = require("./tarjeta-credito.entity");
+const usuario_tarjeta_entity_1 = require("../usuario-tarjeta/usuario-tarjeta.entity");
 let TarjetaCreditoService = class TarjetaCreditoService {
-    constructor(_tarjetaRepository) {
+    constructor(_tarjetaRepository, _usuarioTarjetaRepository) {
         this._tarjetaRepository = _tarjetaRepository;
+        this._usuarioTarjetaRepository = _usuarioTarjetaRepository;
     }
-    findAll() {
+    findByUserId(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this._tarjetaRepository.find();
+            return yield this._tarjetaRepository
+                .createQueryBuilder('tarjeta_credito')
+                .innerJoin('tarjeta_credito.usuariosTarjetas', 'usuarios_tarjetas')
+                .select('tarjeta_credito')
+                .where('usuarios_tarjetas.usuario = :id', { id })
+                .getMany();
         });
     }
-    findByLibroId(id) {
+    insert(id, tarjeta) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this._tarjetaRepository.findOne(id);
+            const tarjetaPreload = yield this._tarjetaRepository.save(tarjeta);
+            const usuarioTarjeta = this._usuarioTarjetaRepository.create({
+                usuario: { id },
+                tarjetaCredito: { id: tarjetaPreload.id },
+            });
+            yield this._usuarioTarjetaRepository.insert(usuarioTarjeta);
+            return tarjetaPreload;
         });
     }
-    insert(tarjeta) {
+    update(tarjeta) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this._tarjetaRepository.insert(tarjeta);
+            return yield this._tarjetaRepository.save(tarjeta);
         });
     }
-    update(id, tarjeta) {
+    delete(id_usuario, id) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this._tarjetaRepository.update(id, tarjeta);
-        });
-    }
-    delete(id) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return yield this._tarjetaRepository.delete(id);
+            return yield this._usuarioTarjetaRepository.delete({
+                usuario: { id: id_usuario },
+                tarjetaCredito: { id }
+            });
         });
     }
 };
 TarjetaCreditoService = __decorate([
     common_1.Injectable(),
     __param(0, typeorm_1.InjectRepository(tarjeta_credito_entity_1.TarjetaCreditoEntity)),
-    __metadata("design:paramtypes", [typeorm_2.Repository])
+    __param(1, typeorm_1.InjectRepository(usuario_tarjeta_entity_1.UsuarioTarjetaEntity)),
+    __metadata("design:paramtypes", [typeorm_2.Repository,
+        typeorm_2.Repository])
 ], TarjetaCreditoService);
 exports.TarjetaCreditoService = TarjetaCreditoService;
 //# sourceMappingURL=tarjeta-credito.service.js.map

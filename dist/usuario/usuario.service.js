@@ -46,6 +46,11 @@ let UsuarioService = class UsuarioService {
             return yield this._usuarioRepository.insert(usuarioInsert);
         });
     }
+    editarUsuario(usuario) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._usuarioRepository.save(usuario);
+        });
+    }
     findByUsername(username) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._usuarioRepository.findOne({ username });
