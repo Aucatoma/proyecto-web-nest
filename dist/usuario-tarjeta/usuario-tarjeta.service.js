@@ -41,6 +41,11 @@ let UsuarioTarjetaService = class UsuarioTarjetaService {
             return yield this._usuarioTarjetaRepository.insert(usuarioTarjetaInsert);
         });
     }
+    obtenerUsuarioTarjeta(usuarioId, tarjetaId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this._usuarioTarjetaRepository.findOne({ usuario: { id: usuarioId }, tarjetaCredito: { id: tarjetaId } });
+        });
+    }
     eliminarUsuarioTarjeta(id) {
         return __awaiter(this, void 0, void 0, function* () {
         });

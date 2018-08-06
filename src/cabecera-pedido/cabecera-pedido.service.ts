@@ -21,7 +21,7 @@ export class CabeceraPedidoService {
   }
 
   async insert(cabecera: CabeceraPedido): Promise<InsertResult>{
-    return await this._cabeceraRepository.insert(cabecera);
+    return await this._cabeceraRepository.save(cabecera);
   }
 
   async update(id: string, cabecera: CabeceraPedido): Promise<UpdateResult>{

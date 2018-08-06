@@ -23,7 +23,9 @@ export class UsuarioTarjetaService {
     });
     return await this._usuarioTarjetaRepository.insert(usuarioTarjetaInsert);
   }
-
+  async obtenerUsuarioTarjeta(usuarioId: number, tarjetaId: number): Promise<UsuarioTarjetaEntity>{
+    return this._usuarioTarjetaRepository.findOne({usuario: {id: usuarioId}, tarjetaCredito: {id: tarjetaId}})
+  }
   async eliminarUsuarioTarjeta(id: number){
 
   }

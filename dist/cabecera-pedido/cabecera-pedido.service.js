@@ -40,7 +40,7 @@ let CabeceraPedidoService = class CabeceraPedidoService {
     }
     insert(cabecera) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this._cabeceraRepository.insert(cabecera);
+            return yield this._cabeceraRepository.save(cabecera);
         });
     }
     update(id, cabecera) {
